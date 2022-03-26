@@ -1,0 +1,44 @@
+* {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 600;
+  font-size: 20px;
+}
+.container {
+  margin-left: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.speechText {
+  width: 80%;
+  line-height: 150%;
+  text-align: left;
+}
+button{
+    margin-top:40px;
+}
+.btntext:hover{
+background-color: black;
+color:white;
+}
+.btntext {
+    background-color: brown;
+    cursor: pointer;
+    color: aliceblue;
+}
+.btn_text:hover {
+    cursor: pointer;
+
+}
+.text {
+  margin-top: 50px;
+  border: 3px solid black;
+  max-width: fit-content;
+  min-width: 301px;
+  min-height:30px;
+  background-color: antiquewhite;
+
+}
+.text h2{
+    font-size: 30px;
+}
