@@ -42,3 +42,10 @@ color:white;
 .text h2{
     font-size: 30px;
 }
+@media (max-width:900px) {
+  .text{
+    margin-bottom:140px;
+    min-width:200px;
+  }
+  
+}

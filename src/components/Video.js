@@ -1,6 +1,7 @@
 import YouTube from "react-youtube";
 import { useState } from "react";
 
+
 const Video = () => {
   const arr = [
     "Nu8kIIL-CDA",
@@ -12,11 +13,10 @@ const Video = () => {
 
   const [url, setUrl] = useState(0);
   const opts = {
-    height: "390",
-    width: "640",
+    width: "100%",
     playerVars: {
       // https://developers.google.com/youtube/player_parameters
-      autoplay: 1,
+      autoplay: 0,
     },
   };
 
@@ -39,6 +39,7 @@ const Video = () => {
   }
   return (
     <div>
+    
       <YouTube
         videoId={arr[url]}
         opts={opts}
