@@ -7,6 +7,7 @@ import {FaMicrophone} from 'react-icons/fa';
 
 
 function Speech() {
+ 
   const [state, setState] = useState(true);
   const [btntext, setBtntext] = useState(" Start Listening");
   const { transcript, resetTranscript } = useSpeechRecognition();

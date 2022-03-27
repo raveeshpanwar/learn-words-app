@@ -2,7 +2,15 @@ import YouTube from "react-youtube";
 import { useState } from "react";
 
 const Video = () => {
-  const [url, setUrl] = useState("Nu8kIIL-CDA");
+  const arr = [
+    "Nu8kIIL-CDA",
+    "G1Bl_cy0svM",
+    "lmeuX7zIdX0",
+    "t8k71QcArnk",
+    "TEH_kNy5Ebk",
+  ];
+
+  const [url, setUrl] = useState(0);
   const opts = {
     height: "390",
     width: "640",
@@ -19,17 +27,30 @@ const Video = () => {
   function onVideoEnd(e) {
     const x = e.target.getPlayerState();
     if (x === 0) {
-      setUrl("G1Bl_cy0svM");
+      change();
     }
   }
-function change(){
-  if(url==='Nu8kIIL-CDA'){setUrl('G1Bl_cy0svM')}
-  else{setUrl('Nu8kIIL-CDA')}
-}
+  function change() {
+    if (url < arr.length - 1) {
+      setUrl(url + 1);
+    } else {
+      setUrl(0);
+    }
+  }
   return (
     <div>
-      <YouTube videoId={url} opts={opts} onReady={onReady} onEnd={onVideoEnd} />
-      <button style={{backgroundColor:'brown',color:'white',cursor:'pointer'}}   onClick={change}>Next</button>
+      <YouTube
+        videoId={arr[url]}
+        opts={opts}
+        onReady={onReady}
+        onEnd={onVideoEnd}
+      />
+      <button
+        style={{ backgroundColor: "brown", color: "white", cursor: "pointer" }}
+        onClick={change}
+      >
+        Next
+      </button>
     </div>
   );
 };
