@@ -25,6 +25,7 @@ color:white;
     background-color: brown;
     cursor: pointer;
     color: aliceblue;
+    margin:10px;
 }
 .btn_text:hover {
     cursor: pointer;
@@ -37,8 +38,10 @@ color:white;
   min-width: 301px;
   min-height:30px;
   background-color: antiquewhite;
+  margin:30px;
 
 }
+
 .text h2{
     font-size: 30px;
 }

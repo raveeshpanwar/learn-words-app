@@ -2,48 +2,57 @@ import SpeechRecognition, {
   useSpeechRecognition,
 } from "react-speech-recognition";
 import styles from "./Speech.module.css";
-import {  useState } from "react";
-import {FaMicrophone} from 'react-icons/fa';
-
+import { useState } from "react";
+import SpeechBox from "./SpeechBox";
 
 function Speech() {
- 
-  const [state, setState] = useState(true);
-  const [btntext, setBtntext] = useState(" Start Listening");
+  const [state, setState] = useState("Box1");
+  const [state2, setState2] = useState("Box2");
   const { transcript, resetTranscript } = useSpeechRecognition();
   function handler(e) {
     e.preventDefault();
-    if (state === false) {
-      setState(true);
-      setBtntext(" Start Listening");
-      if(transcript==='coffee'){
-        alert('Spelled Correctly');
+    SpeechRecognition.stopListening();
+    resetTranscript("");
+    SpeechRecognition.startListening({ continuous: true });
+    if (e.target.value === "one") {
+      console.log(state);
+    } else if (e.target.value === "two") {
+      console.log(state2);
     }
-      resetTranscript(" ");
-    } else {
-      setState(false);
-      setBtntext(" Stop");
+  }
+  
+ 
+  function handler2(e) {
+    SpeechRecognition.stopListening();
+    if (e.target.value === "one") {
+      setState(transcript);
+    } else if (e.target.value === "two") {
+      setState2(transcript);
     }
-
-    state
-      ? SpeechRecognition.startListening({ continous: {state} })
-      : SpeechRecognition.stopListening();
+   
   }
 
   return (
     <div className={styles.container}>
       <div>
         <p className={styles.speechText}>
-        Coffee is a brewed drink prepared from roasted coffee beans, the seeds of berries from certain flowering plants. now lets
-          learn the spelling of coffee: It is spelled as C O F F E E
+          Coffee is a brewed drink prepared from roasted coffee beans, the seeds
+          of berries from certain flowering plants. now lets learn the spelling
+          of coffee: It is spelled as C O F F E E
         </p>
       </div>
-      <div >
-        <button className={styles.btntext} onClick={handler}><FaMicrophone/>{btntext}</button>
-      </div>
-      <div className={styles.text}>
-        <h2 type="text">{transcript}</h2>
-      </div>
+      <SpeechBox
+        handler={handler}
+        handler2={handler2}
+        value="one"
+        transcript={state}
+      />
+      <SpeechBox
+        handler={handler}
+        handler2={handler2}
+        value="two"
+        transcript={state2}
+      />
     </div>
   );
 }
